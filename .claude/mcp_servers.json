@@ -1,0 +1,65 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/user/Jarvis"
+      ]
+    },
+    "tavily": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mcptools/mcp-tavily"
+      ],
+      "env": {
+        "TAVILY_API_KEY": "<TAVILY_API_KEY>"
+      }
+    },
+    "fetch": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-fetch"
+      ]
+    },
+    "gmail": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@gongrzhe/server-gmail-autoauth-mcp"
+      ],
+      "env": {
+        "GMAIL_OAUTH_PATH": ".claude/secrets/gmail-credentials.json",
+        "GMAIL_CREDENTIALS_PATH": ".claude/secrets/gmail-token.json"
+      }
+    },
+    "google-calendar": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@cocal/google-calendar-mcp"
+      ],
+      "env": {
+        "GOOGLE_OAUTH_CREDENTIALS": ".claude/secrets/gcal-credentials.json"
+      }
+    },
+    "google-drive": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-gdrive"
+      ],
+      "env": {
+        "GDRIVE_OAUTH_PATH": ".claude/secrets/gdrive-credentials.json"
+      }
+    }
+  },
+  "_notes": {
+    "secrets": "All credential files live under .claude/secrets/ and are gitignored.",
+    "first-run": "Each Google service triggers browser OAuth on first invocation and caches the token alongside the credentials file.",
+    "package-names": "Package names are best-effort placeholders — verify the current canonical MCP server packages before installing. Update this file once chosen."
+  }
+}
